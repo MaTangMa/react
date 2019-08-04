@@ -3,8 +3,9 @@ import logo from './assets/images/logo.svg';
 import './assets/css/App.css';
 
 // 引入组件
-import Home from './components/Home.js'
-import News from './components/News.js'
+import Home from './components/Home.js';
+import News from './components/News.js';
+import FormDemo from './components/FormDemo.js';
 
 class App extends Component {
   render() {
@@ -15,11 +16,12 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit <code>src/App.js</code>
         </p>
-        
-        <Home></Home>
-        <News></News>
+
+        <Home />
+        <News />
+        <FormDemo />
       </div>
     );
   }

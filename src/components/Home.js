@@ -39,6 +39,11 @@ class Home extends Component {
       name: str
     });
   };
+  eventObj = event => {
+    console.log('事件对象：', event.target);
+    event.target.style.background = 'rgb(198, 219, 165)';
+    console.log('获取自定义aid属性：', event.target.getAttribute('aid'));
+  };
 
   // 模板
   render() {
@@ -70,6 +75,9 @@ class Home extends Component {
         </button>
         <button className="myBtn" onClick={this.setName2.bind(this, '传入name')}>
           改变name 传值
+        </button>
+        <button aid="123" className="myBtn" onClick={this.eventObj}>
+          事件对象
         </button>
       </div>
     );
