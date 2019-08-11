@@ -37,3 +37,29 @@ render () {
   input 标签中的 value 必须由 onChange 事件管理否则会报警告
   非约束性组件用 defaultValue，是用户输入的内容，与 react 无关，不由 react 管理
   约束性组件用 value，不是用户输入的值，是由 onChange 管理的，如果要实现双向绑定必须用此方法
+
+- 父子组件通信
+  父组件传值给子组件
+
+1. 在调用子组件的时候定义一个属性 <Header msg='首页'></Header>
+2. 子组件里面 this.props.msg
+
+- 说明：父组件不仅可以给子组件传值，还可以给子组件传方法,以及把整个父组件传给子组件,可以让子组件给父组件传值 \*
+
+父组件主动获取子组件的数据
+
+1. 调用子组件的时候指定 ref 的值
+
+```
+<Header ref='header'></Header>
+```
+
+2. 通过 this.refs.header 获取整个子组件实例 (dom（组件）加载完成以后获取 )
+   父组件给子组件传值：
+   defaultProps:父子组件传值中，如果父组件调用子组件的时候不给子组件传值，可以在子组件中使用 defaultProps 定义的默认值
+   propTypes：验证父组件传值的类型
+   1、引入 import PropTypes from 'prop-types';
+   2、类.propTypes = {
+   name: PropTypes.string
+   };
+   都是定义在子组件里面

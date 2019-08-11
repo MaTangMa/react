@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../assets/css/index.css';
+import Navigation from './Navigation';
 
 class FormDemo extends React.Component {
   constructor(props) {
@@ -88,7 +89,7 @@ class FormDemo extends React.Component {
   render() {
     return (
       <div>
-        <h2>表单处理</h2>
+        <Navigation title="首页 > 表单处理" />
         <p>描述：{this.state.inputVal}</p>
         <input
           className="myInput"
