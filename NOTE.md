@@ -63,3 +63,28 @@ render () {
    name: PropTypes.string
    };
    都是定义在子组件里面
+
+#### ajax 请求
+
+1. axios 不支持 jsonp
+   npm i axios --save
+   import axios from 'axios'
+
+```
+ var api='http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20';   //接口后台允许了跨域
+        axios.get(api)
+        .then((response)=> {
+            console.log(response.data.result);
+            //用到this要注意this指向
+            this.setState({
+                list:response.data.result
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+```
+
+2. fetchJsonp
+   npm i fetch-jsonp --save
+   import fetchJsonp from 'fetch-jsonp';
