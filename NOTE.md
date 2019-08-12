@@ -88,3 +88,14 @@ render () {
 2. fetchJsonp
    npm i fetch-jsonp --save
    import fetchJsonp from 'fetch-jsonp';
+
+```
+fetchJsonp('/users.jsonp')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
