@@ -99,3 +99,78 @@ fetchJsonp('/users.jsonp')
     console.log('parsing failed', ex)
   })
 ```
+
+### 路由传参
+
+- exact 对 path 严格匹配
+
+* route 传参
+
+```
+<Route path="/newsDetail/:id" component={NewsDetail} />
+
+<Link to={`/newsDetail/${value.id}`}>{value.content}</Link>
+// 获取
+this.props.match.params
+```
+
+- url ？传参
+
+```
+<Route path="/newsDetail" component={NewsDetail} />
+
+<Link to={`/newsDetail?id=${value.id}`}>{value.content}</Link>
+//   获取 url ? 参数
+//   npm i url --save
+let params = url.parse(this.props.location.search, true).query
+```
+
+### antdesign
+
+1. 安装
+   npm i antd --save / yarn add antd / cnpm i antd --save
+2. 在 index.css 引入
+   @import '~antd/dist/antd.css'
+3. 按需引入
+
+- 安装 react-app-rewired
+  yarn add react-app-rewired / cnpm install react-app-rewired --save
+- 修改 package.json
+  react-scripts 需改为 react-app-rewired
+
+```
+"scripts": {
+"start": "react-app-rewired start",
+"build": "react-app-rewired build",
+"test": "react-app-rewired test --env=jsdom",
+"eject": "react-app-rewired eject"
+}
+```
+
+- 根目录新建 config-overrides.js
+  写入
+
+```
+module.exports = function override(config, env) {
+ 		 // do stuff with the webpack config...
+ 	 return config;
+	};
+```
+
+- 安装 babel-plugin-import babel-plugin-import 是一个用于按需加载组件代码和样式的 babel 插件
+  yarn add babel-plugin-import / cnpm install babel-plugin-import --save
+- 修改 config-overrides.js
+
+```
+	const { injectBabelPlugin } = require('react-app-rewired');
+
+  	module.exports = function override(config, env) {
+   	 config = injectBabelPlugin(
+     		   ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }],
+        	   config,
+  	  );
+   	 return config;
+ 	 };
+```
+
+- 然后移除前面在 src/App.css 里全量添加的 @import '~antd/dist/antd.css'; 直接引入组件使用就会有对应的 css

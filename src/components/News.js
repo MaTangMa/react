@@ -3,6 +3,8 @@ import React from 'react';
 import img from '../assets/images/red.jpg';
 import Navigation from './Navigation.js';
 import Footer from './Footer.js';
+import { Link } from 'react-router-dom';
+
 //
 import '../assets/css/index.css';
 class News extends React.Component {
@@ -10,7 +12,20 @@ class News extends React.Component {
     super(props); // props用于父子组件传值，也是标准
     this.state = {
       msg: '新闻',
-      newsList: [{ content: '1111' }, { content: '2222' }, { content: '3333' }],
+      newsList: [
+        {
+          content: '1111',
+          id: '1111'
+        },
+        {
+          content: '2222',
+          id: '2222'
+        },
+        {
+          content: '3333',
+          id: '3333'
+        }
+      ],
       htmlList: [<h2 key="1">h2list</h2>, <h2 key="2">h2list2</h2>],
       newsLength: 10
     };
@@ -23,7 +38,11 @@ class News extends React.Component {
   };
   render() {
     let listResut = this.state.newsList.map((value, key) => {
-      return <li key={key}>{value.content}</li>;
+      return (
+        <li key={key}>
+          <Link to={`/newsDetail/${value.id}`}>{value.content}</Link>
+        </li>
+      );
     });
 
     return (
@@ -44,7 +63,11 @@ class News extends React.Component {
         <ul>
           {// 或者直接在这里循环
           this.state.newsList.map((value, key) => {
-            return <li key={key}>{value.content}</li>;
+            return (
+              <li key={key}>
+                <Link to={`/newsDetail?id=${value.id}`}>{value.content}</Link>
+              </li>
+            );
           })}
         </ul>
 

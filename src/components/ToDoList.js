@@ -104,6 +104,8 @@ class Todolist extends Component {
                   -- <button onClick={this.removeData.bind(this, key)}>删除</button>
                 </li>
               );
+            } else {
+              return null;
             }
           })}
         </ul>
@@ -125,7 +127,7 @@ class Todolist extends Component {
                   -- <button onClick={this.removeData.bind(this, key)}>删除</button>
                 </li>
               );
-            }
+            } else return null;
           })}
         </ul>
       </div>

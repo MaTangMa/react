@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { deflate } from 'zlib';
+// import { deflate } from 'zlib';
 import '../assets/css/index.css';
 
 class Home extends Component {
